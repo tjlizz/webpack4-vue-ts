@@ -1,19 +1,15 @@
 {
   "name": "webpack4-vue-ts",
   "version": "1.0.0",
-  "description": "",
+  "description": "```  $ mkdir 'webpack4-vue-ts'",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "  webpack-dev-server --config webpack.dev.js"
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "html-webpack-plugin": "^3.2.0",
-    "webpack": "^4.41.2",
-    "webpack-cli": "^3.3.9",
-    "webpack-dev-server": "^3.8.2"
+    "webpack": "^4.41.2"
   }
 }

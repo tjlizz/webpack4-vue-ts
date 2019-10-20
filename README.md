@@ -15,5 +15,9 @@
 # 安装`webpack`
 
 ```
-npm install --save-dev webpack
+$ npm init -y
+
+$ npm install --save-dev webpack
+
 ```
+# 初始化`webpack.config.js`
