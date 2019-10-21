@@ -1,6 +1,6 @@
 # 初始化
  ```
- $ mkdir 'webpack4-vue-ts'
+ $ mkdir webpack4-vue-ts
 
  $ cd webpack-4-vue-ts
  
@@ -61,12 +61,48 @@ module.exports = {
 ```
 npm install webpack-dev-server --save-dev
 ```
-##  配置
-package.jsongit
+##  使用
+package.json
 ```
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start":"npx webpack-dev-server --config webpack.dev.js"
+    "start":"webpack-dev-server --config  webpack.dev.js"
+  }
+
+```
+## 运行
+
+```
+$ npm start
+```
+# webpack.prod.js
+## 配置
+```
+$ touch webpack.prod.js
+```
+webpack.prod.js
+```
+const path = require('path');
+var HtmlWebpackPlugin = require('html-webpack-plugin');
+
+module.exports = {
+  mode:'production',
+  entry: './src/index.js',
+  output: {
+    filename: 'main.js',
+    path: path.resolve(__dirname, 'dist'),
   },
+  plugins: [new HtmlWebpackPlugin()]
+
+};
+```
+> 目前仅是把`webpack.dev.js`中的`mode`修改成`production`
+## 使用
+package.json
+```
+     "scripts":
+      {
+          "build:dev": "npx webpack --config webpack.dev.js",
+          "build": "npx webpack --config webpack.prod.js"
+      }
 
 ```
