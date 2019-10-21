@@ -238,3 +238,14 @@ new Vue({
  ```
  $ npm start
  ```
+
+![](https://user-gold-cdn.xitu.io/2019/10/21/16dec4a7a92ea76f?w=549&h=174&f=png&s=10900)
+# webpack-merge
+## 安装
+```
+$ npm install --save-dev webpack-merge
+```
+## 目录调整
+
+
+![](https://user-gold-cdn.xitu.io/2019/10/21/16dec5c0b8e5f5e9?w=210&h=280&f=png&s=12304)
