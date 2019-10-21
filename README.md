@@ -245,7 +245,70 @@ new Vue({
 ```
 $ npm install --save-dev webpack-merge
 ```
-## 目录调整
+### 配置
 
+ 增加 `webpack.common.js`
+ ```
+ const path = require('path');
+var HtmlWebpackPlugin = require('html-webpack-plugin');
+const VueLoaderPlugin = require('vue-loader/lib/plugin')
+module.exports = {
+  entry: './src/index.js',
+  output: {
+    filename: 'main.js',
+    path: path.resolve(__dirname, 'dist'),
+  },
+  module: {
+    rules: [
+      {
+        test: /\.vue$/,
+        loader: 'vue-loader'
+      },
+      {
+        test: /\.js$/,
+        loader: 'babel-loader'
+      }
+    ]
+  },
 
-![](https://user-gold-cdn.xitu.io/2019/10/21/16dec5c0b8e5f5e9?w=210&h=280&f=png&s=12304)
+  resolve: {
+    modules: [__dirname, 'node_modules'],
+    alias: {
+      'vue$': 'vue/dist/vue.esm.js'
+    },
+    extensions: ['*', '.js', '.vue', '.json']
+  },
+  plugins: [
+    new HtmlWebpackPlugin(),
+    new VueLoaderPlugin()]
+
+};
+ ```
+ webpack.dev.js
+ ```
+ const merge = require('webpack-merge');
+ const common = require('./webpack.common.js');
+
+ module.exports = merge(common, {
+   mode: 'development'
+ });
+ ```
+ webpack.prod.js
+ ```
+ const merge = require('webpack-merge');
+ const common = require('./webpack.common.js');
+
+ module.exports = merge(common, {
+   mode: 'production'
+ });
+ ```
+  ### 目录调整
+ ![](https://user-gold-cdn.xitu.io/2019/10/21/16dec5c0b8e5f5e9?w=210&h=280&f=png&s=12304)
+  ###  package.json
+```
+ "scripts": {
+    "start": "webpack-dev-server --config  ./config/webpack.dev.js",
+    "build:dev": "npx webpack --config ./config/webpack.dev.js",
+    "build": "npx webpack --config ./config/webpack.prod.js"
+  },
+```
