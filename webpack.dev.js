@@ -1,19 +1,35 @@
 const path = require('path');
 var HtmlWebpackPlugin = require('html-webpack-plugin');
-
+const VueLoaderPlugin = require('vue-loader/lib/plugin')
 module.exports = {
-  mode:'development',
+  mode: 'development',
   entry: './src/index.js',
   output: {
     filename: 'main.js',
     path: path.resolve(__dirname, 'dist'),
   },
-  resolve: {
-      alias: {
-          'vue$': 'vue/dist/vue.esm.js'
+  module: {
+    rules: [
+      {
+        test: /\.vue$/,
+        loader: 'vue-loader'
       },
-      extensions: ['*', '.js', '.vue', '.json']
+      {
+        test: /\.js$/,
+        loader: 'babel-loader'
+      }
+    ]
   },
-  plugins: [new HtmlWebpackPlugin()]
+
+  resolve: {
+    modules: [__dirname, 'node_modules'],
+    alias: {
+      'vue$': 'vue/dist/vue.esm.js'
+    },
+    extensions: ['*', '.js', '.vue', '.json']
+  },
+  plugins: [
+    new HtmlWebpackPlugin(),
+    new VueLoaderPlugin()]
 
 };

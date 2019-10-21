@@ -106,3 +106,135 @@ package.json
       }
 
 ```
+
+# Vue
+## 安装
+```
+$ npm install -D vue  vue-loader vue-template-compiler
+```
+>每个 `vue` 包的新版本发布时，一个相应版本的 `vue-template-compiler` 也会随之发布。编译器的版本必须和基本的 `vue` 包保持同步，这样 `vue-loader` 就会生成兼容运行时的代码。这意味着你每次升级项目中的 `vue` 包时，也应该匹配升级 `vue-template-compiler`。
+## webpack 配置
+
+webpack.dev.js
+
+```
+const path = require('path');
+var HtmlWebpackPlugin = require('html-webpack-plugin');
+
+module.exports = {
+  mode:'development',
+  entry: './src/index.js',
+  output: {
+    filename: 'main.js',
+    path: path.resolve(__dirname, 'dist'),
+  },
+  resolve: {
+      alias: {
+          'vue$': 'vue/dist/vue.esm.js'
+      },
+      extensions: ['*', '.js', '.vue', '.json']
+  },
+  plugins: [new HtmlWebpackPlugin()]
+
+};
+```
+## 入口文件
+./src/index.js
+```
+import Vue from 'vue'
+const app = document.createElement('div')
+app.textContent='{{message}}'
+app.id = "app"
+document.body.appendChild(app)
+new Vue({
+    el: '#app',
+    data(){
+        return{ 
+            message:'hi vue'
+        }
+    }
+})
+```
+## 运行
+```
+$ npm start
+```
+
+![](https://user-gold-cdn.xitu.io/2019/10/21/16dec2e7db5533af?w=808&h=310&f=png&s=12725)
+## 第一个组件
+ ###  安装依赖
+ ```
+  $ npm i -D  babel-core@6.26.3  babel-loader@7.1.5
+ ```
+ >`babel-core` 和`babel-loader`互相依赖特定的版本
+ ### 配置webpack
+ webpack.dev.js
+ ```
+ const path = require('path');
+var HtmlWebpackPlugin = require('html-webpack-plugin');
+const VueLoaderPlugin = require('vue-loader/lib/plugin')
+module.exports = {
+  mode: 'development',
+  entry: './src/index.js',
+  output: {
+    filename: 'main.js',
+    path: path.resolve(__dirname, 'dist'),
+  },
+  module: {
+    rules: [
+      {
+        test: /\.vue$/,
+        loader: 'vue-loader'
+      },
+      {
+        test: /\.js$/,
+        loader: 'babel-loader'
+      }
+    ]
+  },
+
+  resolve: {
+    modules: [__dirname, 'node_modules'],
+    alias: {
+      'vue$': 'vue/dist/vue.esm.js'
+    },
+    extensions: ['*', '.js', '.vue', '.json']
+  },
+  plugins: [
+    new HtmlWebpackPlugin(),
+    new VueLoaderPlugin()]
+
+};
+ ```
+ ### hello-world
+ 
+ ./src/hello-world.vue
+ ```
+ <template>
+  <div>
+    <div>这是第一个Vue组件</div>
+  </div>
+</template>
+<script>
+export default {
+  name: "hello-world"
+};
+</script>
+ 
+ ```
+ ./src/index.js
+ ```
+ import Vue from 'vue'
+import HelloWorld from './hello-world'
+const app = document.createElement('div')
+app.id = "app"
+document.body.appendChild(app)
+new Vue({
+    el: '#app',
+    render: h => h(HelloWorld)
+})
+ ```
+ ### 运行
+ ```
+ $ npm start
+ ```

@@ -1,13 +1,9 @@
 import Vue from 'vue'
+import HelloWorld from './hello-world'
 const app = document.createElement('div')
-app.textContent='{{message}}'
 app.id = "app"
 document.body.appendChild(app)
 new Vue({
     el: '#app',
-    data(){
-        return{ 
-            message:'hi vue'
-        }
-    }
+    render: h => h(HelloWorld)
 })
