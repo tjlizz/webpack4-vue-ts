@@ -293,15 +293,17 @@ module.exports = {
    mode: 'development'
  });
  ```
- webpack.prod.js
- ```
+webpack.prod.js
+ 
+```
  const merge = require('webpack-merge');
  const common = require('./webpack.common.js');
 
  module.exports = merge(common, {
    mode: 'production'
  });
- ```
+```
+ 
   ### 目录调整
  ![](https://user-gold-cdn.xitu.io/2019/10/21/16dec5c0b8e5f5e9?w=210&h=280&f=png&s=12304)
   ###  package.json
@@ -311,4 +313,33 @@ module.exports = {
     "build:dev": "npx webpack --config ./config/webpack.dev.js",
     "build": "npx webpack --config ./config/webpack.prod.js"
   },
+```
+# CSS
+ ## 安装依赖
+ ```
+ $  npm install --save-dev style-loader css-loader
+ ```
+
+  ## webpack配置
+
+```
+
+
+ module: {
+    rules: [
+      {
+        test: /\.css$/,
+        use: [{ loader: 'style-loader' }, { loader: 'css-loader' }],
+      }
+    ]
+  }
+```
+## 使用
+```
+ <style  scoped>
+ 
+  div{
+      color :red;
+  }
+ </style>
 ```
