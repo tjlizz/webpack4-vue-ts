@@ -4,7 +4,7 @@
   "description": "```  $ mkdir 'webpack4-vue-ts'",
   "main": "index.js",
   "scripts": {
-    "start":"webpack-dev-server --config  webpack.dev.js",
+    "start": "webpack-dev-server --config  webpack.dev.js",
     "build:dev": "npx webpack --config webpack.dev.js",
     "build": "npx webpack --config webpack.prod.js"
   },
@@ -13,8 +13,13 @@
   "license": "ISC",
   "devDependencies": {
     "html-webpack-plugin": "^3.2.0",
+    "vue-loader": "^15.7.1",
+    "vue-template-compiler": "^2.6.10",
     "webpack": "^4.41.2",
     "webpack-cli": "^3.3.9",
-    "webpack-dev-server": "^3.8.2"
+    "webpack-dev-server": "^3.8.2",
+    "vue": "^2.6.10"
+  },
+  "dependencies": {
   }
 }
