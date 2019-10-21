@@ -335,6 +335,7 @@ webpack.prod.js
   }
 ```
 ## 使用
+./src/hello-world.vue
 ```
  <style  scoped>
  
@@ -343,3 +344,7 @@ webpack.prod.js
   }
  </style>
 ```
+## 运行
+
+
+![](https://user-gold-cdn.xitu.io/2019/10/21/16dec78fe803ab3f?w=437&h=219&f=png&s=10899)
