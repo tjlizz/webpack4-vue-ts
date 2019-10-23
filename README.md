@@ -348,3 +348,71 @@ webpack.prod.js
 
 
 ![](https://user-gold-cdn.xitu.io/2019/10/21/16dec78fe803ab3f?w=437&h=219&f=png&s=10899)
+
+# TypeScript
+ ## 安装依赖
+  ```$xslt
+$ npm i -D ts-loader vue-property-decorator typescript
+```
+   ##配置
+   ### tsconfig.json
+   ```$xslt
+$tsc --init
+```
+### webpack.common.js
+```$xslt
+module.exports = {
+  entry: './src/index.ts',
+  output: {
+    filename: 'main.js',
+    path: path.resolve(__dirname, '../dist'),
+  },
+  module: {
+    rules: [
+     {
+        test: /\.tsx?$/,
+        loader: 'ts-loader',
+        exclude: /node_modules/,
+        options: {
+          appendTsSuffixTo: [/\.vue$/],
+      }
+    
+    ]
+  }
+};
+```
+##第一个ts组件
+HelloWorld.vue
+```$xslt
+<template>
+    <div>
+        <div>这是一个ts的组件</div>
+    </div>
+</template>
+<script lang="ts">
+    import {Vue, Component} from "vue-property-decorator";
+
+    @Component
+    export default class HelloWorld extends Vue {
+    };
+</script>
+
+<style scoped>
+
+</style>
+```
+## index.ts
+```$xslt
+import Vue from "vue";
+
+import HelloWorld from "./HelloWorld.vue";
+
+const app: HTMLDivElement = document.createElement('div');
+app.id = "app";
+document.body.appendChild(app);
+let v = new Vue({
+    el: "#app",
+    render: h => h(HelloWorld)
+});
+```
+   
