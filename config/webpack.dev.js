@@ -4,8 +4,7 @@ const merge = require('webpack-merge');
  module.exports = merge(common, {
    mode: 'development',
      devServer: {
-
-         before: require('../mock/index.ts'),//引入mock/index.js
+         before: require('../mock'),//引入mock/index.js
 
      },
 

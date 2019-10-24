@@ -1,7 +1,7 @@
  const  Mock=require('mockjs')
  const util = require('./util');
 //返回一个函数
-module.exports = function(app){
+ module.exports = function(app){
     //监听http请求
     app.get('/user/userinfo', function (rep, res) {
         //每次响应请求时读取mock data的json文件

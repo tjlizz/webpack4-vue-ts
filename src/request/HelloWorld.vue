@@ -9,22 +9,13 @@
 
     @Component
     export default class HelloWorld extends Vue {
-
         test(): void {
-            this.service({url: '/user/userinfo'}) .then((data:any)=>{
-                    //打印mock data
-                    console.log(data);
+            this.$service({url: '/user/userinfo'}) .then((data:any)=>{
                     if(data.error === 0){
-
                     }else{
-
                     }
-
                 });
-
-
         }
-
     };
 </script>
 

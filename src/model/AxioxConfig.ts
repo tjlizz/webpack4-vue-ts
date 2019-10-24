@@ -1,5 +1,5 @@
 export interface AxioxConfig {
-
     method: String;
-    url: String
+    url: String,
+    data:any
 }

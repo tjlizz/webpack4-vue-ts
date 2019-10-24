@@ -10,7 +10,7 @@
  
  $ cd src
  
- $ touch index.ts
+ $ touch index.js
  ```
 # 安装`webpack`
 
@@ -28,7 +28,7 @@ const path = require('path');
 
 module.exports = {
   mode:'development',
-  entry: './src/index.ts',
+  entry: './src/index.js',
   output: {
     filename: 'main.js',
     path: path.resolve(__dirname, 'dist'),
@@ -48,7 +48,7 @@ var HtmlWebpackPlugin = require('html-webpack-plugin');
 var path = require('path');
 
 module.exports = {
-  entry: 'index.ts',
+  entry: 'index.js',
   output: {
     path: path.resolve(__dirname, './dist'),
     filename: 'index_bundle.js'
@@ -86,7 +86,7 @@ var HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
   mode:'production',
-  entry: './src/index.ts',
+  entry: './src/index.js',
   output: {
     filename: 'main.js',
     path: path.resolve(__dirname, 'dist'),
@@ -123,7 +123,7 @@ var HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
   mode:'development',
-  entry: './src/index.ts',
+  entry: './src/index.js',
   output: {
     filename: 'main.js',
     path: path.resolve(__dirname, 'dist'),
@@ -139,7 +139,7 @@ module.exports = {
 };
 ```
 ## 入口文件
-./src/index.ts
+./src/index.js
 ```
 import Vue from 'vue'
 const app = document.createElement('div')
@@ -175,7 +175,7 @@ var HtmlWebpackPlugin = require('html-webpack-plugin');
 const VueLoaderPlugin = require('vue-loader/lib/plugin')
 module.exports = {
   mode: 'development',
-  entry: './src/index.ts',
+  entry: './src/index.js',
   output: {
     filename: 'main.js',
     path: path.resolve(__dirname, 'dist'),
@@ -222,7 +222,7 @@ export default {
 </script>
  
  ```
- ./src/index.ts
+ ./src/index.js
  ```
  import Vue from 'vue'
 import HelloWorld from './hello-world'
@@ -253,7 +253,7 @@ $ npm install --save-dev webpack-merge
 var HtmlWebpackPlugin = require('html-webpack-plugin');
 const VueLoaderPlugin = require('vue-loader/lib/plugin')
 module.exports = {
-  entry: './src/index.ts',
+  entry: './src/index.js',
   output: {
     filename: 'main.js',
     path: path.resolve(__dirname, 'dist'),
@@ -362,7 +362,7 @@ $tsc --init
 ### webpack.common.js
 ```$xslt
 module.exports = {
-  entry: './src/index.ts',
+  entry: './src/index.js',
   output: {
     filename: 'main.js',
     path: path.resolve(__dirname, '../dist'),
@@ -401,7 +401,7 @@ HelloWorld.vue
 
 </style>
 ```
-## index.ts
+## index.js
 ```$xslt
 import Vue from "vue";
 
