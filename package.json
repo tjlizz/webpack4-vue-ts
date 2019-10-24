@@ -4,7 +4,7 @@
   "description": "```  $ mkdir 'webpack4-vue-ts'",
   "main": "index.js",
   "scripts": {
-    "start": "webpack-dev-server --config  ./config/webpack.dev.js",
+    "start": "webpack-dev-server   --config  ./config/webpack.dev.js --hot",
     "build:dev": "npx webpack --config ./config/webpack.dev.js",
     "build": "npx webpack --config ./config/webpack.prod.js"
   },

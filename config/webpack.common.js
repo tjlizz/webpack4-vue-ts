@@ -1,17 +1,21 @@
 const path = require('path');
 var HtmlWebpackPlugin = require('html-webpack-plugin');
 const VueLoaderPlugin = require('vue-loader/lib/plugin')
+const webpack = require('webpack');
 module.exports = {
-    entry: './src/index.ts',
+
+    entry:'./src/index.ts',
     output: {
-        filename: 'main.js',
+        filename: '[name].[hax].js',
         path: path.resolve(__dirname, '../dist'),
-    } ,
+
+    },
     module: {
         rules: [
             {
                 test: /\.vue$/,
-                loader: 'vue-loader'
+                loader: 'vue-loader',
+                options: {hotReload: true}
             }, {
                 test: /\.tsx?$/,
                 loader: 'ts-loader',
@@ -27,8 +31,9 @@ module.exports = {
             , {
                 test: /\.css$/,
                 use: [{loader: 'style-loader'}, {loader: 'css-loader'}],
-            }, {
-                test: /\.(png|jpg|gif)$/,
+            },
+            {
+                test: /\.(ttf|eot|svg|gif|woff)(\?v=[0-9]\.[0-9]\.[0-9])?$/,
                 use: [
                     {
                         loader: 'file-loader',
@@ -44,10 +49,12 @@ module.exports = {
         alias: {
             'vue$': 'vue/dist/vue.esm.js'
         },
-        extensions: ['*', '.js', '.vue', '.json',".ts"]
+        extensions: ['*', '.js', '.vue', '.json', ".ts"]
     },
     plugins: [
         new HtmlWebpackPlugin(),
-        new VueLoaderPlugin()]
+        new VueLoaderPlugin(),
+        new webpack.HotModuleReplacementPlugin(),
+        new webpack.NamedModulesPlugin()]
 
 };
